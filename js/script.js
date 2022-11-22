@@ -5,14 +5,16 @@ let dirX = 1;
 let ballY = 43;
 let dirY = 1;
 let move = false;
+let tabBrik = [7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7];
+let bing;
 
 function start() {
 
     move = true;
 
     setTimeout(function() {  
-        ballX += (dirX * 0.4);
-        ballY += (dirY * 0.3);
+        ballX += (dirX * 0.8);
+        ballY += (dirY * 1);
         document.getElementById("ball").style.transform = "translate(" + ballX + "vw, "+ ballY +"vh)";
         
         if (ballX > 90 || ballX < 10) {
@@ -22,11 +24,17 @@ function start() {
         if (ballY > 96) {
             dirY *= -1;
             } else if (ballY < 43) {
+                bing = (Math.trunc(((ballX -10) / 4)));
+                console.log(tabBrik[bing]);
+                tabBrik[bing]--;
+                console.log(tabBrik+" "+tabBrik[bing]);
                 dirY *= -1;
-                document.getElementById('jeu').children[Math.trunc(((ballX -10) / 4))].children[1].style.display = "none";
-                console.log(ballX+" "+Math.trunc(((ballX -10) / 4)))
-            }
-              
+                switch (Math.trunc(((ballX -10) / 4))){
+                    case bing :
+                        document.getElementById('jeu').children[bing].children[tabBrik[bing]].style.display = "none"; 
+                        break;
+                }
+            }            
 
         if (move) {           
         start();             
