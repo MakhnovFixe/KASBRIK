@@ -1,7 +1,9 @@
 // document.getElementById('jeu').children[8].children[6].style.display = "none";
 
-let ballX = 0;
-let ballY = 35;
+let ballX = 10;
+let dirX = 1;
+let ballY = 43;
+let dirY = 1;
 let move = false;
 
 function start() {
@@ -9,15 +11,29 @@ function start() {
     move = true;
 
     setTimeout(function() {  
-        ballX += 1;
-        ballY += 1;
+        ballX += (dirX * 0.4);
+        ballY += (dirY * 0.3);
         document.getElementById("ball").style.transform = "translate(" + ballX + "vw, "+ ballY +"vh)";
+        
+        if (ballX > 90 || ballX < 10) {
+            dirX *= -1;
+        } 
 
-        if (ballX > 48 && move) {           
+        if (ballY > 96) {
+            dirY *= -1;
+            } else if (ballY < 43) {
+                dirY *= -1;
+                document.getElementById('jeu').children[(Math.round(((ballX -10) * 1.25) / 5))].children[1].style.display = "none";
+                console.log(ballX+" "+(Math.round(((ballX -10) * 1.25) / 5)))
+            }
+              
+
+        if (move) {           
         start();             
         }
 
-    }, 100)
+  
+    }, 12)
 }
 
 function stop() {
