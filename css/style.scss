@@ -1,0 +1,50 @@
+html, body {
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    display:grid;
+    place-content: center;
+    background-color: white;
+}
+
+#jeu {
+    height:90vh;
+    width:80vw;
+    border:10px solid black;
+    background-color: whitesmoke;
+    display:flex;
+    flex-wrap: nowrap;
+}
+
+.col {
+    border:1px solid red;
+    min-height:calc(100% - 2px);
+    width:calc(100% / 20);
+    display:flex;
+    flex-direction: column; 
+}
+
+.row {
+    height:5vh;
+    border:1px solid green;
+    flex:none;
+}
+
+@for $i from 1 through 20 {
+    @for $j from 1 through 7{
+        .col:nth-of-type(#{$i}) .row:nth-of-type(#{$j}) {
+            background-color: rgb(calc(25 + 30 * $j), calc(10 + 10 * $i), calc(255 - (5 * $i) - (15 * $j)));
+        }
+    }
+}
+
+.row:last-child {
+    height:100%;
+    background-color: blanchedalmond!important;
+    flex:1 1 auto;
+}
