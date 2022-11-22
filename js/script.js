@@ -23,8 +23,8 @@ function start() {
             dirY *= -1;
             } else if (ballY < 43) {
                 dirY *= -1;
-                document.getElementById('jeu').children[(Math.round(((ballX -10) * 1.25) / 5))].children[1].style.display = "none";
-                console.log(ballX+" "+(Math.round(((ballX -10) * 1.25) / 5)))
+                document.getElementById('jeu').children[Math.trunc(((ballX -10) / 4))].children[1].style.display = "none";
+                console.log(ballX+" "+Math.trunc(((ballX -10) / 4)))
             }
               
 
